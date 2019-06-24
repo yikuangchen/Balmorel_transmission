@@ -1037,6 +1037,7 @@ PARAMETER IGEQF(YYY,CCCRRRAAA,FFF)          "Exact annual (any year) fuel use by
 $ifi %GEQF_DOL%==CCCRRRAAA_FFF              IGEQF(Y,CCCRRRAAA,FFF) = GEQF(CCCRRRAAA,FFF);
 $ifi %GEQF_DOL%==YYY_CCCRRRAAA_FFF          IGEQF(Y,CCCRRRAAA,FFF) = GEQF(Y,CCCRRRAAA,FFF);
 
+
 $ifi %LoadInvestData%==yes PARAMETER IGKFX_KPOTSTEP_TEMP(YYY,AAA,GGG,KPOTSTEP)
 $ifi %LoadInvestData%==yes execute_load  '../../simex/GENINVEST_%CASEID%.gdx' GKVACCDECOM=GKVACCDECOM IGKFX_KPOTSTEP_TEMP=VGKNACCUMNET_KPOTSTEP.L;
 $ifi %LoadInvestData%==yes GKFX(YYY,AAA,GGG)=GKFX(YYY,AAA,GGG)+GKVACCDECOM(YYY,AAA,GGG);
@@ -1047,7 +1048,7 @@ $ifi %GKRATE_DOL%==AAA_GGG_SSS      IGKRATE(IA,G,S,T)$((NOT GKRATE(IA,G,S)) AND 
 $ifi %GKRATE_DOL%==AAA_GGG_SSS_TTT  IGKRATE(IA,G,S,T) = GKRATE(IA,G,S,T);
 $ifi %GKRATE_DOL%==AAA_GGG_SSS_TTT  IGKRATE(IA,G,S,T)$((NOT GKRATE(IA,G,S,T)) AND ((SUM(Y,GKFX(Y,IA,G))) OR  AGKN(IA,G))) = 1; !! Insert default values.
 
-CHRONOHOUR(S,T)=IHOURSINST(S,T);
+
 * Unload input data to gdx and possibly MDB files.
 * Note that this is a compile time operation, such that only the 'direct' data
 * definitions (and no assignments) are reflected:
