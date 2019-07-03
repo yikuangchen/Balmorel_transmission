@@ -42,7 +42,7 @@ $setglobal PROJECTID
 * (or Access MDBs) will have the CASEID as filename with the appropriate extension.
 * Note that CASEID MUST be identical to folder name of the diretory holding the case.
 *
-$setglobal CASEID  test
+$setglobal CASEID  BASE
 *!option !fixedvalue
 
 
@@ -82,15 +82,15 @@ $setglobal testbb1234
 
 
 * This variable shall be switched on for Dynamix Grid Tarifs as in Scenario 1 in Flex4Res
-$SETGLOBAL SCENARIO1	YES 
+$SETGLOBAL SCENARIO1
 *!option yes
 
 * This variable shall be switched on for Dynamix Grid Tarifs as in Scenario 2 in Flex4Res
-$SETGLOBAL SCENARIO2
+$SETGLOBAL SCENARIO2  YES
 *!option yes
 
 * This variable shall be switched on for Dynamix Grid Tarifs as in Scenario 4 in Flex4Res
-$SETGLOBAL SCENARIO3  
+$SETGLOBAL SCENARIO3
 *!option yes
 
 * This variable shall be switched on for Dynamix Grid Tarifs as in Scenario 4 in Flex4Res
@@ -147,7 +147,7 @@ XINVESTSTART= 2030;
 
 *----BEGIN: Investments transition -------
 *Save generation and transmission investments from model run to hard drive
-$setglobal SaveInvestData yes
+$setglobal SaveInvestData
 
 * Load generation and transmission investmets to hard drive
 $setglobal LoadInvestData
@@ -349,7 +349,7 @@ $setglobal DUMB
 *!option
 
 * Adds smart charging. Only smart charging, without V2G!:
-$setglobal SMART yes
+$setglobal SMART
 *!option
 
 * Adds V2G charging:
@@ -357,7 +357,7 @@ $setglobal V2G
 *!option
 
 * Adds V2G charging:
-$setglobal STEPCHARGSCHEME
+$setglobal STEPCHARGSCHEME yes
 *!option
 
 * Adds cycle degradation charging:
@@ -458,7 +458,7 @@ $ifi not %BB3%==yes   $setglobal HYRSBB123 none
 *-------------------------------------------------------------------------------
 * Options timeaggr control automatic aggregation of time segments.
 *
-$setglobal timeaggr
+$setglobal timeaggr yes
 *!option yes
 
 
