@@ -42,7 +42,7 @@ $setglobal PROJECTID
 * (or Access MDBs) will have the CASEID as filename with the appropriate extension.
 * Note that CASEID MUST be identical to folder name of the diretory holding the case.
 *
-$setglobal CASEID  BASE
+$setglobal CASEID  BASE_timeagg
 *!option !fixedvalue
 
 
@@ -82,11 +82,11 @@ $setglobal testbb1234
 
 
 * This variable shall be switched on for Dynamix Grid Tarifs as in Scenario 1 in Flex4Res
-$SETGLOBAL SCENARIO1
+$SETGLOBAL SCENARIO1  YES
 *!option yes
 
 * This variable shall be switched on for Dynamix Grid Tarifs as in Scenario 2 in Flex4Res
-$SETGLOBAL SCENARIO2  YES
+$SETGLOBAL SCENARIO2
 *!option yes
 
 * This variable shall be switched on for Dynamix Grid Tarifs as in Scenario 4 in Flex4Res
@@ -121,7 +121,7 @@ $SETGLOBAL HEATSTORE_LIM_CAPACITY   yes
 *---- Generation investments options----
 
 * Permit investments in generation and storage capacity:
-$setglobal TechInvest    YES
+$setglobal TechInvest YES
 *!option yes
 
 SCALAR GINVESTSTART 'Year from which engoenous decisions in generation capacities are allowed' ;
@@ -231,7 +231,7 @@ $setglobal DFLEXQUANT
 *!option yes
 
 * Allow demand response
-$setglobal DEMANDRESPONSE   yes
+$setglobal DEMANDRESPONSE
 *!option yes
 
 * Permit exchange of electricity with third regions using a price interface (in contrast to X3FX) (TO-DO, TEST IT)
@@ -341,7 +341,7 @@ $setglobal UnitCseg
 * EV addon:
 * overall control variable EV must be 'yes' if any of the other EV controls are:
 
-$setglobal EV   yes
+$setglobal EV
 *!option
 
 * Adds DUMB charging:
@@ -458,7 +458,7 @@ $ifi not %BB3%==yes   $setglobal HYRSBB123 none
 *-------------------------------------------------------------------------------
 * Options timeaggr control automatic aggregation of time segments.
 *
-$setglobal timeaggr yes
+$setglobal timeaggr   YES
 *!option yes
 
 
@@ -618,7 +618,7 @@ putclose fileMERGESAVEPOINTRESULTSbash;
 $setglobal MERGEDSAVEPOINTRESULTS2MDB
 *!option yes    !onlyif %SAVEPOINTVALUE%==1  !onlyif %MERGESAVEPOINTRESULTS%==yes
 
-$setglobal MERGEDSAVEPOINTRESULTS2SQLITE
+$setglobal MERGEDSAVEPOINTRESULTS2SQLITE       yes
 *!option yes    !onlyif %SAVEPOINTVALUE%==1  !onlyif %MERGESAVEPOINTRESULTS%==yes
 
 
