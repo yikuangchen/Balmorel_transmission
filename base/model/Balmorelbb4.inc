@@ -1047,7 +1047,7 @@ $ifi %GKRATE_DOL%==AAA_GGG_SSS      IGKRATE(IA,G,S,T)$((NOT GKRATE(IA,G,S)) AND 
 $ifi %GKRATE_DOL%==AAA_GGG_SSS_TTT  IGKRATE(IA,G,S,T) = GKRATE(IA,G,S,T);
 $ifi %GKRATE_DOL%==AAA_GGG_SSS_TTT  IGKRATE(IA,G,S,T)$((NOT GKRATE(IA,G,S,T)) AND ((SUM(Y,GKFX(Y,IA,G))) OR  AGKN(IA,G))) = 1; !! Insert default values.
 
-CHRONOHOUR(S,T)=IHOURSINST(S,T);
+
 * Unload input data to gdx and possibly MDB files.
 * Note that this is a compile time operation, such that only the 'direct' data
 * definitions (and no assignments) are reflected:
@@ -1517,7 +1517,7 @@ $include "../../base/addons/_hooks/qhymaxg.inc"
 * "Electricty storage dynamic equation (MWh)"
 QESTOVOLT(IY411,IA,IGESTO,IS3,T)$(IAGK_HASORPOT(IY411,IA,IGESTO))..
     VESTOVOLT(IY411,IA,IGESTO,IS3,T++1) =E= VESTOVOLT(IY411,IA,IGESTO,IS3,T)
-  + CHRONOHOUR(IS3,T)*
+  + WEIGHT_T(T)*CHRONOHOUR(IS3,T)*
     (VESTOLOADT(IY411,IA,IGESTO,IS3,T)*SUM(IAGK_HASORPOT(IY411,IA,IGESTO),GDATA(IGESTO,'GDFE'))
   - SUM(IAGK_HASORPOT(IY411,IA,IGESTO), VGE_T(IY411,IA,IGESTO,IS3,T)) )
 $include "../../base/addons/_hooks/qestovolt.inc"
@@ -1526,7 +1526,7 @@ $include "../../base/addons/_hooks/qestovolt.inc"
 * "Inter-seasonal electricty storage dynamic equation (MWh)"
 QESTOVOLTS(IY411,IA,IGESTOS,S,T)$(IAGK_HASORPOT(IY411,IA,IGESTOS))..
     VESTOVOLTS(IY411,IA,IGESTOS,S,T)
-  + CHRONOHOUR(S,T)*
+  + WEIGHT_S(S)*(1/168)*CHRONOHOUR(S,T)*
   (VESTOLOADTS(IY411,IA,IGESTOS,S,T)
   - SUM(IAGK_HASORPOT(IY411,IA,IGESTOS), VGE_T(IY411,IA,IGESTOS,S,T)/GDATA(IGESTOS,'GDFE'))
   )
@@ -1539,7 +1539,7 @@ $include "../../base/addons/_hooks/qestovolts.inc"
 * "Heat storage dynamic equation (MWh)"
 QHSTOVOLT(IY411,IA,IGHSTO,IS3,T)$(IAGK_HASORPOT(IY411,IA,IGHSTO))..
     VHSTOVOLT(IY411,IA,IGHSTO,IS3,T)
-  + CHRONOHOUR(IS3,T)*
+  + WEIGHT_T(T)*CHRONOHOUR(IS3,T)*
   (VHSTOLOADT(IY411,IA,IGHSTO,IS3,T)
   - SUM(IAGK_HASORPOT(IY411,IA,IGHSTO), VGH_T(IY411,IA,IGHSTO,IS3,T)/GDATA(IGHSTO,'GDFE')) )
     =E= VHSTOVOLT(IY411,IA,IGHSTO,IS3,T++1)
@@ -1549,7 +1549,7 @@ $include "../../base/addons/_hooks/qhstovolt.inc"
 *  "Inter-seasonal heat storage dynamic equation (MWh)"
 QHSTOVOLTS(IY411,IA,IGHSTOS,S,T)$(IAGK_HASORPOT(IY411,IA,IGHSTOS))..
     VHSTOVOLTS(IY411,IA,IGHSTOS,S,T)
-  + CHRONOHOUR(S,T)*
+  + WEIGHT_S(S)*(1/168)*CHRONOHOUR(S,T)*
   (VHSTOLOADTS(IY411,IA,IGHSTOS,S,T)
   - SUM(IAGK_HASORPOT(IY411,IA,IGHSTOS), VGH_T(IY411,IA,IGHSTOS,S,T)/GDATA(IGHSTOS,'GDFE'))
   )
