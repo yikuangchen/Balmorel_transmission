@@ -410,6 +410,7 @@ $kill weight_t
 * LARS: If not all S have been generated use the first.
 * Set relative time weights of T to the number of elements in IT2TTT
 WEIGHT_T(T)=sum((S,TTT)$(IT2TTT(S,T,TTT) and ord(S)=1),1);
+WEIGHT_T(TTT)$(not T(TTT))=0;
 * Set relative time weights of S identical
 WEIGHT_S(S)=168*card(SSS)/card(S);
 WEIGHT_S(SSS)$(not S(SSS))=0;
